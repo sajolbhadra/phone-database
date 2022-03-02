@@ -36,12 +36,12 @@ const displaySearchResult = (phones) => {
         //Show if phones Founded
         document.getElementById('data-found').innerText = `${phones.length} phones Found`;
         phones.forEach(phones => {
-            console.log(phones);
+            // console.log(phones);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
         <div " class="card my-4 h-100">
-             <img src="${phones.image}" class="card-img-top" height="450px" width="150px" alt="No image found for this Phone">
+             <img src="${phones.image}" class="card-img-top"  alt="No image found for this Phone">
             <div class="card-body">
               <h5 class="card-title">Brand: ${phones.brand}</h5>
               <h6 class="card-text">Name: ${phones.phone_name}</h6>            </div>
@@ -68,69 +68,133 @@ const detail = (id) => {
     // console.log(id)
 }
 
+
 const showDetail = (phone) => {
 
     if (phone.releaseDate == '') {
         document.getElementById('phone-details').innerHTML = `
-    <div>
-    <img src="${phone.image}" alt"">
-    <h4>Version: ${phone.name}</h4>
-    <h5>Release Date: No release date found</h5>
-    <h5>storage : ${phone.mainFeatures.storage}</h5>
-    <h5>display Size : ${phone.mainFeatures.displaySize}</h5>
-    <h5>ChipSet : ${phone.mainFeatures.chipSet}</h5>
-    <h5>memory : ${phone.mainFeatures.memory}</h5>
-    <h5>Sensors : ${phone.mainFeatures.sensors}</h5>
-    <h5>Other Features : </h5>
-    <p>WLAN: ${phone.others.WLAN}</p>
-    <p>Bluetooth: ${phone.others.Bluetooth} </p>
-    <p>GPS: ${phone.others.GPS}</p>
-    <p>NFS: ${phone.others.NFS}</p>
-    <p>Radio: ${phone.others.Radio}</p>
+    <div class="container">
+    <div class="row">
+    <div class="col py-5">
+    <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td>Version: ${phone.name}</td>
+        </tr>
+        <tr>
+        <td>Release Date: No Release Date Found</td>
+        </tr>
+        <tr>
+        <td>storage : ${phone.mainFeatures.storage}</td>
+        </tr>
+        <tr>
+        <td>display Size : ${phone.mainFeatures.displaySize}</td>
+        </tr>
+        <tr>
+        <td>ChipSet : ${phone.mainFeatures.chipSet}</td>
+        </tr>
+        <tr>
+        <td>memory : ${phone.mainFeatures.memory}</td>
+        </tr>
+        <tr>
+        </tbody>
+        </table>
+
     </div>
-
-
-
-
-    
+    <div class="col">
+    <h5 class="text-primary">Sensors</h5>
+    <table class="table table-striped">
+<tbody>
+    <td>Sensors : ${phone.mainFeatures.sensors}</td>
+  </tr>
+  </tbody>
+  </table>
+    <h5 class="text-primary">Other Features : </h5>
+    <table class="table table-striped">
+  <tbody>
+      <tr>
+      <td>WLAN: ${phone.others.WLAN}</td>
+    </tr>
+      <tr>
+      <td>Bluetooth: ${phone.others.Bluetooth}</td>
+    </tr>
+      <tr>
+      <td>GPS: ${phone.others.GPS}</td>
+    </tr>
+      <tr>
+      <td>NFS: ${phone.others.NFS}</td>
+    </tr>
+      <tr>
+      <td>Radio: ${phone.others.Radio}</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</div>
     `;
     }
     else {
         document.getElementById('phone-details').innerHTML = `
-    <div>
+    <div class="container">
     <img src="${phone.image}" alt"">
-    <h4>Name: ${phone.name}</h4>
-    <h5>Release Date: ${phone.releaseDate}</h5>
-    <h5>Version : ${phone.slug}</h5>
-    <h5>storage : ${phone.mainFeatures.storage}</h5>
-    <h5>display Size : ${phone.mainFeatures.displaySize}</h5>
-    <h5>ChipSet : ${phone.mainFeatures.chipSet}</h5>
-    <h5>memory : ${phone.mainFeatures.memory}</h5>
-    <h5>Sensors : ${phone.mainFeatures.sensors}</h5>
-    <h5>Other Features : </h5>
-    <p>WLAN: ${phone.others.WLAN}</p>
-    <p>Bluetooth: ${phone.others.Bluetooth} </p>
-    <p>GPS: ${phone.others.GPS}</p>
-    <p>NFS: ${phone.others.NFS}</p>
-    <p>Radio: ${phone.others.Radio}</p>
-
-    </div>
+                <div class="row">
+                    <div class="col">
+                    <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <td>Version: ${phone.name}</td>
+                        </tr>
+                        <tr>
+                        <td>Release Date: ${phone.releaseDate}</td>
+                        </tr>
+                        <tr>
+                        <td>storage : ${phone.mainFeatures.storage}</td>
+                        </tr>
+                        <tr>
+                        <td>display Size : ${phone.mainFeatures.displaySize}</td>
+                        </tr>
+                        <tr>
+                        <td>ChipSet : ${phone.mainFeatures.chipSet}</td>
+                        </tr>
+                        <tr>
+                        <td>memory : ${phone.mainFeatures.memory}</td>
+                        </tr>
+                        <tr>
+                        </tbody>
+                        </table>
+                
+                    </div>
+                    <div class="col">
+                    <h5 class="text-primary">Sensors</h5>
+                    <table class="table table-striped">
+                <tbody>
+                    <td>Sensors : ${phone.mainFeatures.sensors}</td>
+                  </tr>
+                  </tbody>
+                  </table>
+                    <h5 class="text-primary">Other Features : </h5>
+                    <table class="table table-striped">
+                  <tbody>
+                      <tr>
+                      <td>WLAN: ${phone.others.WLAN}</td>
+                    </tr>
+                      <tr>
+                      <td>Bluetooth: ${phone.others.Bluetooth}</td>
+                    </tr>
+                      <tr>
+                      <td>GPS: ${phone.others.GPS}</td>
+                    </tr>
+                      <tr>
+                      <td>NFS: ${phone.others.NFS}</td>
+                    </tr>
+                      <tr>
+                      <td>Radio: ${phone.others.Radio}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                    </div>
+                </div>
     `;
+        console.log(phone.others)
     }
-    // document.getElementById('phone-details') = element.classList('border');
-
-    // // document.getElementById('data-found').innerText = `${phones.length} phones Found`;
-    // phone.forEach(phone => {
-    //     console.log(phone);
-    //     const div = document.createElement('div');
-    //     div.classList.add('col');
-    //     div.innerHTML = `
-    //     <div " class="card my-4 h-100">
-    //          <img src="${phone.image}" class="card-img-top" height="450px" width="150px" alt="No image found for this Phone">
-
-    //     `;
-    // phoneDetails.appendChild(div);
-    // console.log(phones.numFound[0]);
-    // });
-    console.log(phone)
 }   
