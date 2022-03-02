@@ -2,7 +2,6 @@ const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     // console.log(searchText);
-
     //-------------Clear Data ----------------
     searchField.value = '';
     if (searchText === '') {
@@ -21,7 +20,8 @@ const searchPhone = () => {
     }
 }
 
-const displaySearchResult = phones => {
+
+const displaySearchResult = (phones) => {
     const searchResult = document.getElementById('search-result');
 
     //Clean phones 
@@ -40,11 +40,12 @@ const displaySearchResult = phones => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-        <div onclick="loadPhoneDetail(${phones.title})" class="card h-100">
+        <div " class="card my-4 h-100">
              <img src="${phones.image}" class="card-img-top" height="450px" width="150px" alt="No image found for this Phone">
             <div class="card-body">
               <h5 class="card-title">Brand: ${phones.brand}</h5>
               <h6 class="card-text">Name: ${phones.phone_name}</h6>
+              <p className="phone-model">${phones.slug}</p>
             </div>
             <button onclick="detail()" class="btn btn-outline-secondary" type="button"
                     id="phone-details">Detail</button>
@@ -55,3 +56,21 @@ const displaySearchResult = phones => {
         });
     }
 }
+
+
+
+
+const detail = () => {
+    const phoneModel = document.getElementById('phone-model');
+    const phoneText = phoneModel.innerText;
+    console.log(phoneText)
+    //--------------load Detail Data----------------
+    const url = `https://openapi.programming-hero.com/api/phone/${id}
+    `;
+    console.log(url)
+    // console.log(url);
+    fetch(url)
+        .then(res => res.json())
+        .then(data => console.log(data));
+}
+
